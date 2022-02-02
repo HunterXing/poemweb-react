@@ -65,12 +65,15 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "prepare": "husky install",
+    "prettier": "npx prettier --write ."
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:prettier/recommended"
     ]
   },
   "browserslist": {
@@ -140,5 +143,15 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": ">=6",
+    "lint-staged": ">=10",
+    "prettier": "2.5.1"
+  },
+  "lint-staged": {
+    "*.{js,css,md,jsx, ts, tsx}": "prettier --write"
   }
 }
