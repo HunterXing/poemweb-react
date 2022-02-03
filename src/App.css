@@ -1,0 +1,19 @@
+html {
+  /**
+        em 相对于父元素的font-size
+        rem 相对于 html的font-size
+        16 * 62.5% = 10
+        1rem === 10px
+     */
+  font-size: 62.5%;
+}
+
+html body #root .App {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}

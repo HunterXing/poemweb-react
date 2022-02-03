@@ -1,12 +1,12 @@
-import React from "react";
+import "./App.css";
 import "antd/dist/antd.less";
-import { Button } from "antd";
+// import { Button } from "antd";
+import PortalHome from "./pages/home/portal/index";
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Button type={"primary"}>测试</Button>
-      </header>
+      <PortalHome />
     </div>
   );
 }
