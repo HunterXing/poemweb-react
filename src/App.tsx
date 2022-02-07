@@ -1,4 +1,4 @@
-import "./App.css";
+import "./assets/styles/common.css";
 import "antd/dist/antd.less";
 import { useRoutes } from "react-router-dom";
 import { onRouteBefore, routes } from "./router";

@@ -1,49 +1,56 @@
 /*
  * @description: 路由统一管理
  * @Date: 2022-02-07 11:24:29
- * @LastEditTime: 2022-02-07 14:42:41
+ * @LastEditTime: 2022-02-07 21:27:38
  * @Author: xingheng
  */
 // 全局路由配置
 const routes = [
   {
     path: "/",
-    redirect: "/home",
+    redirect: "/portal",
   },
   {
     path: "/",
-    component: () => import("../pages/home/portal"),
+    component: () => import("pages/portal"),
     meta: {
       title: "首页",
       needLogin: true,
     },
     children: [
       {
-        path: "home",
-        component: () => import("../pages/home/portal/first"),
+        path: "portal",
+        component: () => import("pages/portal/home-index"),
         meta: {
           title: "首页",
-          needLogin: true,
+          needLogin: false,
         },
       },
       {
         path: "ancientpoetry",
-        component: () => import("../pages/home/portal/ancient-poetry"),
+        component: () => import("pages/portal/ancient-poetry"),
         meta: {
           title: "古诗词",
+          needLogin: false,
+        },
+      },
+      {
+        path: "addpoem",
+        component: () => import("components/NoData/DevContainer"),
+        meta: {
+          title: "诗词录入",
           needLogin: true,
         },
       },
     ],
   },
-  // {
-  //   path: "*",
-  //   component: () =>
-  //     import(/* webpackChunkName: "404" */ "./page/test/page404"),
-  //   meta: {
-  //     title: "404",
-  //   },
-  // },
+  {
+    path: "*",
+    component: () => import("pages/error/page404"),
+    meta: {
+      title: "404",
+    },
+  },
 ];
 
 /**
