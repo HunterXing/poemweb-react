@@ -1,14 +1,14 @@
 import "./App.css";
 import "antd/dist/antd.less";
-// import { Button } from "antd";
-import PortalHome from "./pages/home/portal/index";
+import { useRoutes } from "react-router-dom";
+import { onRouteBefore, routes } from "./router";
+import { setRouteBefore, transformRoutes } from "router/router-guard/fn";
 
 function App() {
-  return (
-    <div className="App">
-      <PortalHome />
-    </div>
-  );
+  const elements = useRoutes(transformRoutes(routes));
+  setRouteBefore(onRouteBefore);
+
+  return elements;
 }
 
 export default App;

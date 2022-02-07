@@ -1,7 +1,7 @@
 /*
  * @description: 门户导航containter
  * @Date: 2022-02-02 23:58:17
- * @LastEditTime: 2022-02-03 21:24:19
+ * @LastEditTime: 2022-02-07 14:27:12
  * @Author: xingheng
  */
 
@@ -12,7 +12,8 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 import AncientPoetry from "../ancient-poetry/index";
 const Container = styled.div`
   position: relative;
-  width: 120rem;
+  width: 85%;
+  min-width: 120rem;
   background: #fff;
   margin: 0 auto;
   padding: 1rem;
@@ -41,6 +42,7 @@ const LeftName = styled.div`
   font-weight: bold;
   font-size: 1.8rem;
 `;
+
 const RightRouters = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -50,32 +52,37 @@ const RightRouters = styled.div`
   height: 7rem;
 `;
 
-const RouterLink = styled.div`
+const RouterLink = styled(Link)`
   display: inline-block;
-  width: 7.5rem;
+  width: 42%;
   font-size: 1.6rem;
   cursor: pointer;
+  color: #000;
 `;
 
-const routerList = [
+export const routerList = [
   {
     name: "诗词",
     children: [
       {
         name: "古代诗词",
         path: "ancientpoetry",
+        element: AncientPoetry,
       },
       {
         name: "诗词录入",
         path: "",
+        element: AncientPoetry,
       },
       {
         name: "诗词测试",
         path: "",
+        element: AncientPoetry,
       },
       {
         name: "检索排行",
         path: "",
+        element: AncientPoetry,
       },
     ],
   },
@@ -85,14 +92,17 @@ const routerList = [
       {
         name: "诗人排行",
         path: "",
+        element: AncientPoetry,
       },
       {
         name: "诗人风采",
         path: "",
+        element: AncientPoetry,
       },
       {
         name: "诗人轶事",
         path: "",
+        element: AncientPoetry,
       },
     ],
   },
@@ -102,14 +112,17 @@ const routerList = [
       {
         name: "诗词典故",
         path: "",
+        element: AncientPoetry,
       },
       {
         name: "精选点评",
         path: "",
+        element: AncientPoetry,
       },
       {
         name: "坐听诗语",
         path: "",
+        element: AncientPoetry,
       },
     ],
   },
@@ -119,14 +132,17 @@ const routerList = [
       {
         name: "官方活动",
         path: "",
+        element: AncientPoetry,
       },
       {
         name: "诗讯列表",
         path: "",
+        element: AncientPoetry,
       },
       {
         name: "诗讯投稿",
         path: "",
+        element: AncientPoetry,
       },
     ],
   },
@@ -147,20 +163,22 @@ const NavContainer = () => {
 // @ts-ignore
 const RouterList = ({ list }) => {
   return (
-    <Router>
+    <Fragment>
       {list.map(
         (router: { name: string; children: Array<any> }, index: number) => (
           <RouterListItemWrap key={index}>
             <LeftName>{router.name}</LeftName>
             <RightRouters>
               {router.children.map((_router, _index: number) => (
-                <RouterLink key={_index}> {_router.name}</RouterLink>
+                <RouterLink to={_router.path} key={_index}>
+                  {_router.name}
+                </RouterLink>
               ))}
             </RightRouters>
           </RouterListItemWrap>
         )
       )}
-    </Router>
+    </Fragment>
   );
 };
 export default NavContainer;

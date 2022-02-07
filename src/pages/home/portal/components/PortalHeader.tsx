@@ -1,12 +1,14 @@
 /*
  * @description: 门户头部
  * @Date: 2022-02-02 23:51:21
- * @LastEditTime: 2022-02-02 23:51:22
+ * @LastEditTime: 2022-02-07 14:25:29
  * @Author: xingheng
  */
 import { Fragment } from "react";
 import styled from "@emotion/styled";
 import { Input, Button } from "antd";
+import { Link } from "react-router-dom";
+
 const { Search } = Input;
 const Header = styled.div`
   display: flex;
@@ -14,7 +16,8 @@ const Header = styled.div`
   height: 14rem;
   border-bottom: 0.5rem solid #ae1e03;
   position: relative;
-  width: 120rem;
+  width: 85%;
+  min-width: 120rem;
   background: #fff;
   margin: 0 auto;
   padding: 1rem;
@@ -59,7 +62,9 @@ const PortalHeader = () => {
   return (
     <Fragment>
       <Header>
-        <ImageLogo />
+        <Link to={"/"}>
+          <ImageLogo />
+        </Link>
         <ImageLogoSecond />
         <SearchPoem
           placeholder="全局搜索诗词 "
