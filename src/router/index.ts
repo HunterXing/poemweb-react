@@ -45,6 +45,14 @@ const routes = [
     ],
   },
   {
+    path: "/projectlist",
+    component: () => import("pages/learn-pages/project-list"),
+    meta: {
+      title: "项目列表",
+      needLogin: false,
+    },
+  },
+  {
     path: "*",
     component: () => import("pages/error/page404"),
     meta: {
