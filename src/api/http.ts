@@ -26,6 +26,9 @@ http.interceptors.response.use(
 
   (err) => {
     message.error(`响应失败 ${err}`);
+    return new Promise((resolve, reject) => {
+      reject(err);
+    });
   }
 );
 

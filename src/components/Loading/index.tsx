@@ -14,6 +14,9 @@ const Container = styled.div<{
   width: 100%;
   height: ${(props) => props.h || "100vh"};
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export interface LoadingProps extends SpinProps {

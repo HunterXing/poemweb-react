@@ -1,7 +1,7 @@
 /*
  * @description: 路由统一管理
  * @Date: 2022-02-07 11:24:29
- * @LastEditTime: 2022-02-07 21:27:38
+ * @LastEditTime: 2022-02-12 15:55:49
  * @Author: xingheng
  */
 // 全局路由配置
@@ -9,6 +9,14 @@ const routes = [
   {
     path: "/",
     redirect: "/portal",
+  },
+  {
+    path: "/login",
+    component: () => import("pages/login"),
+    meta: {
+      title: "登录页",
+      needLogin: false,
+    },
   },
   {
     path: "/",
