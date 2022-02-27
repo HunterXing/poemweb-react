@@ -1,10 +1,3 @@
-/*
- * @description: 登陆页
- * @Date: 2022-02-12 15:43:08
- * @LastEditTime: 2022-02-12 16:24:53
- * @Author: xingheng
- */
-
 import { Button, Form, Input, message } from "antd";
 import styled from "@emotion/styled";
 import { useState } from "react";
@@ -15,6 +8,7 @@ import { to } from "await-to-js";
 interface ResponseProps<T> {
   code: number;
   data: T;
+
   message: string;
 }
 

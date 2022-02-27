@@ -1,3 +1,8 @@
+/*
+ * @description: http.ts
+ * @Date: 2022-02-23 19:35:08
+ * @Author: xingheng
+ */
 import axios from "axios";
 
 import { message } from "antd";
