@@ -5,13 +5,6 @@ import http from "api/http";
 import { useNavigate } from "react-router-dom";
 import { to } from "await-to-js";
 
-interface ResponseProps<T> {
-  code: number;
-  data: T;
-
-  message: string;
-}
-
 const LoginScreen = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({

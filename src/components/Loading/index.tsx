@@ -20,12 +20,12 @@ const Container = styled.div<{
 `;
 
 export interface LoadingProps extends SpinProps {
-  heigth?: string;
+  height?: string;
 }
 
 const Loading = ({ ...props }: LoadingProps) => {
   return (
-    <Container h={props.heigth}>
+    <Container h={props.height}>
       <Spin size={props.size} />
     </Container>
   );

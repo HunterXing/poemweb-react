@@ -5,8 +5,6 @@
  */
 import ReactEcharts from "echarts-for-react";
 import "echarts-wordcloud";
-import useMount from "hooks/useMount";
-import http from "api/http";
 
 export interface WordCloudProps {
   name: string;
