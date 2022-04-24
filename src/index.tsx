@@ -4,21 +4,21 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import CommonFooter from "components/CommonFooter";
 import styled from "@emotion/styled";
-
+import { QueryClient, QueryClientProvider } from "react-query";
 const ContainWrap = styled.div`
   min-height: 100vh;
 `;
 
 ReactDOM.render(
   <React.StrictMode>
-    <Fragment>
+    <QueryClientProvider client={new QueryClient()}>
       <ContainWrap>
         <BrowserRouter>
           <App />
         </BrowserRouter>
       </ContainWrap>
-      <CommonFooter />
-    </Fragment>
+    </QueryClientProvider>
+    <CommonFooter />
   </React.StrictMode>,
   document.getElementById("root")
 );

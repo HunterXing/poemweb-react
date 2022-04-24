@@ -1,17 +1,18 @@
 /*
  * @description: 古代诗词列表
  * @Date: 2022-02-03 20:26:03
- * @LastEditTime: 2022-02-07 14:29:48
+ * @LastEditTime: 2022-04-24 22:02:47
  * @Author: xingheng
  */
 import { useState, Suspense } from "react";
-import WordCloud, { WordCloudProps } from "./WordCloud";
+import WordCloud from "./WordCloud";
 import useMount from "hooks/useMount";
-import http from "api/http";
+// import http from "api/http";
 import styled from "@emotion/styled";
 import ScrollList from "./ScrollList";
 import Loading from "components/Loading";
 import _ from "lodash";
+import { usePoemCount } from "api/poemApi";
 
 const AncientPoetry = () => {
   return (
@@ -24,27 +25,13 @@ const AncientPoetry = () => {
 };
 
 const WordContent = () => {
-  const [words, setWords] = useState([]);
-  const [count, setCount] = useState(0);
-
-  useMount(() => {
-    http.get(`/poem/count`).then((res) => {
-      const words = res.data.map((word: { name: string; number: number }) => ({
-        name: word.name,
-        value: word.number,
-      }));
-      setWords(words);
-      let sum = 0;
-      words.map((word: WordCloudProps) => {
-        sum += word.value;
-      });
-      setCount(sum);
-    });
-  });
+  // const [count, setCount] = useState(0);
+  const { data: words, isLoading } = usePoemCount();
+  const count = words?.length;
 
   return (
     <>
-      {_.isEmpty(words) ? (
+      {isLoading ? (
         <Loading height={"50rem"} size={"large"} />
       ) : (
         <Container>

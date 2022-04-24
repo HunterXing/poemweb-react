@@ -5,15 +5,11 @@
  */
 import ReactEcharts from "echarts-for-react";
 import "echarts-wordcloud";
+import { PoemCount } from "types/Poem";
 
-export interface WordCloudProps {
-  name: string;
-  value: number;
-}
-
-const WordCloud = ({ words }: { words: WordCloudProps[] }) => {
+const WordCloud = ({ words }: { words: PoemCount[] | undefined }) => {
   const wordOption = () => {
-    let wordData = [...words];
+    let wordData = words ? [...words] : [];
     return {
       backgroundColor: "#fff",
       tooltip: {

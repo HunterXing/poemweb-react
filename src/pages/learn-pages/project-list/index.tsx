@@ -1,12 +1,12 @@
 /*
  * @description: 工程列表
  * @Date: 2022-02-09 20:38:09
- * @LastEditTime: 2022-02-10 15:08:16
+ * @LastEditTime: 2022-04-24 21:30:41
  * @Author: xingheng
  */
 
 import { Fragment, useEffect, useState } from "react";
-import http from "api/http";
+// import http from "api/http";
 import SearchPanel from "./SearchPanel";
 import TableList from "./TableList";
 import useMount from "hooks/useMount";
@@ -31,21 +31,21 @@ const ProjectList = () => {
 
   const debounceParam = useDebounce(param);
 
-  useMount(() => {
-    http.get("/dept/list").then((res) => {
-      setDepts(res.data.list);
-    });
-  });
+  // useMount(() => {
+  //   http.get("/dept/list").then((res) => {
+  //     setDepts(res.data.list);
+  //   });
+  // });
 
-  useEffect(() => {
-    http
-      .post("/user/list", {
-        ...debounceParam,
-      })
-      .then((res) => {
-        setUsers(res.data.list);
-      });
-  }, [debounceParam]);
+  // useEffect(() => {
+  //   http
+  //     .post("/user/list", {
+  //       ...debounceParam,
+  //     })
+  //     .then((res) => {
+  //       setUsers(res.data.list);
+  //     });
+  // }, [debounceParam]);
 
   return (
     <Fragment>

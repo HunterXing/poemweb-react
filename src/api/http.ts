@@ -1,40 +1,64 @@
 /*
- * @description: http.ts
- * @Date: 2022-02-23 19:35:08
+ * @description: 封装 fetch
+ * @Date: 2022-03-05 20:06:42
  * @Author: xingheng
  */
-import axios from "axios";
 
-import { message } from "antd";
+import qs from "qs";
+interface HttpConfig extends RequestInit {
+  data?: object;
+  token?: string;
+}
 
-// 创建 axios实例
-const http = axios.create({
-  baseURL: "http://localhost:8080/api",
-  // 请求超时时间
-  timeout: 15000,
-});
-// 添加请求拦截器
-http.interceptors.request.use(
-  (config) => {
-    return config;
-  },
-  (err) => {
-    message.error(`请求失败 ${err}`);
+/**
+ * @description:
+ * @param {string} endpoint
+ * @param {*} param2
+ * @return {*}
+ */
+export const http = async (
+  endpoint: string,
+  { data, token, headers, ...customConfig }: HttpConfig = {}
+) => {
+  const config = {
+    method: "GET",
+    headers: {
+      Authorization: token ? `Bearer ${token}` : "",
+      "Content-Type": "application/json",
+    },
+    ...customConfig,
+  };
+
+  // get请求的话，拼接在url里
+  if (config.method.toUpperCase() === "GET") {
+    endpoint += `?${qs.stringify(data)}`;
+  } else {
+    config.body = JSON.stringify(data || {});
   }
-);
 
-// 响应拦截器
-http.interceptors.response.use(
-  (response) => {
-    return response.data;
-  },
+  return window.fetch(`${endpoint}`, config).then(async (response) => {
+    // 没权限则退出
+    if (response.status === 401) {
+      // await logout();
+      window.location.reload();
+      return Promise.reject({
+        message: "没有权限",
+      });
+    }
+    const data = await response.json();
+    if (response.ok && data.code === 200) {
+      return data;
+    } else {
+      return Promise.reject(data);
+    }
+  });
+};
 
-  (err) => {
-    message.error(`响应失败 ${err}`);
-    return new Promise((resolve, reject) => {
-      reject(err);
+export const useHttp = () => {
+  return (endpoint: string, { data, token, ...customConfig }: HttpConfig) => {
+    return http(endpoint, {
+      data,
+      ...customConfig,
     });
-  }
-);
-
-export default http;
+  };
+};

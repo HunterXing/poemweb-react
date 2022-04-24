@@ -1,7 +1,7 @@
 import { Button, Form, Input, message } from "antd";
 import styled from "@emotion/styled";
 import { useState } from "react";
-import http from "api/http";
+// import http from "api/http";
 import { useNavigate } from "react-router-dom";
 import { to } from "await-to-js";
 
@@ -16,18 +16,18 @@ const LoginScreen = () => {
    * @description: 登录表单提交
    */
   const onSubmit = async () => {
-    let [err, response] = await to(
-      http.post("/user/login", {
-        ...form,
-      })
-    );
-    if (!err && response?.data) {
-      message.success("登录成功", 1, () => {
-        navigate("/");
-      });
-    } else {
-      if (!err) message.error("登录失败");
-    }
+    // let [err, response] = await to(
+    //   http.post("/user/login", {
+    //     ...form,
+    //   })
+    // );
+    // if (!err && response?.data) {
+    //   message.success("登录成功", 1, () => {
+    //     navigate("/");
+    //   });
+    // } else {
+    //   if (!err) message.error("登录失败");
+    // }
   };
 
   return (

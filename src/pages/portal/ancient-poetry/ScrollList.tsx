@@ -4,14 +4,14 @@
  * @Author: xingheng
  */
 
-import { WordCloudProps } from "./WordCloud";
 import styled from "@emotion/styled";
+import { PoemCount } from "types/Poem";
 
-const ScrollList = ({ list }: { list: WordCloudProps[] }) => {
+const ScrollList = ({ list }: { list: PoemCount[] | undefined }) => {
   return (
     <>
       <ScrollListWrap>
-        {list.map((item, index) => (
+        {list?.map((item, index) => (
           <ScrollListItem key={index}>
             <div className="scroll-list-item-title">《{item.name}》</div>
             <div className="scroll-list-item-content">{item.value} </div> 首
