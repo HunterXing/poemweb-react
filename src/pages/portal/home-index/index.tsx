@@ -1,12 +1,14 @@
 /*
  * @description: 首页默认路由页面
  * @Date: 2022-02-06 22:36:09
- * @LastEditTime: 2022-02-07 14:43:07
+ * @LastEditTime: 2022-04-24 22:37:35
  * @Author: xingheng
  */
 
 import styled from "@emotion/styled";
 import { PlayCircleOutlined } from "@ant-design/icons";
+import { useRecomendAncient } from "api/poemApi";
+import { Poem } from "types/Poem";
 
 const PortalFirst = () => {
   return (
@@ -17,6 +19,9 @@ const PortalFirst = () => {
 };
 
 const PortalAncientRecommend = () => {
+  const { data: poems } = useRecomendAncient();
+  const topRecomend = (poems ? poems[0] : {}) as Poem;
+  const otherRecomend = poems ? [...poems].slice(1, poems.length) : [];
   return (
     <>
       <TitleImgWrap>
@@ -38,17 +43,13 @@ const PortalAncientRecommend = () => {
         <AncientContent>
           <AncientContentLeft></AncientContentLeft>
           <AncientContentRightItem>
-            <div className={"poem-title"}>
-              兵要望江南 占日第十一（京本列第六○五十六首） 二
-            </div>
+            <div className={"poem-title"}>{topRecomend?.title}</div>
           </AncientContentRightItem>
           <AncientContentRightItem>
-            <span className={"poem-author"}>作者：李白</span>
+            <span className={"poem-author"}>作者：{topRecomend?.author}</span>
           </AncientContentRightItem>
           <AncientContentRightContent>
-            两阵近，青气日边生。
-            <br />
-            其状分明如半月，顺其形气速前征，交战必须赢。
+            {topRecomend?.content}
           </AncientContentRightContent>
         </AncientContent>
         <ListenPoemWrapper>
@@ -61,15 +62,13 @@ const PortalAncientRecommend = () => {
             <div>作者：雍陶</div>
           </div>
           <RightListWrap>
-            {[1, 2, 3, 4, 5].map(() => (
+            {otherRecomend?.map((poem) => (
               <div className={"list-group-item"}>
-                <div>
-                  <img
-                    src="http://poem.notfound404.cn/img/20191230153735.png"
-                    alt=""
-                  />
-                  <span> 《次韵陈叔永山居二首 其二》</span>
-                </div>
+                <img
+                  src="http://poem.notfound404.cn/img/20191230153735.png"
+                  alt=""
+                />
+                <span className="poem-name"> 《{poem.title}》</span>
 
                 <PlayCircleOutlined />
               </div>
@@ -196,6 +195,15 @@ const RightListWrap = styled.div`
     line-height: 4.5rem;
     border-bottom: 0.1rem solid #e8e8e8;
     padding: 1rem;
+
+    .poem-name {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+    }
 
     img {
       width: 3.8rem;

@@ -9,7 +9,7 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 module.exports = function (app) {
   app.use(
     createProxyMiddleware("/api", {
-      target: "http://127.0.0.1:7001", //转发到的ß域名或者ip地址
+      target: "http://notfound404.cn", //转发到的ß域名或者ip地址
       // pathRewrite: {
       //   "^/api": "", //接口地址里没有"/api",将其重写置空
       // },
