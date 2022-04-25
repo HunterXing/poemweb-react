@@ -1,7 +1,7 @@
 /*
  * @description: 首页默认路由页面
  * @Date: 2022-02-06 22:36:09
- * @LastEditTime: 2022-04-24 22:37:35
+ * @LastEditTime: 2022-04-24 23:38:04
  * @Author: xingheng
  */
 
@@ -21,7 +21,9 @@ const PortalFirst = () => {
 const PortalAncientRecommend = () => {
   const { data: poems } = useRecomendAncient();
   const topRecomend = (poems ? poems[0] : {}) as Poem;
-  const otherRecomend = poems ? [...poems].slice(1, poems.length) : [];
+  const secondRecomend = (poems ? poems[1] : {}) as Poem;
+  const otherRecomend = poems ? [...poems].slice(2, poems.length) : [];
+
   return (
     <>
       <TitleImgWrap>
@@ -58,8 +60,8 @@ const PortalAncientRecommend = () => {
               src="http://poem.notfound404.cn/img/20191230153735.png"
               alt="title"
             />
-            <div>《小桃源诗 二》</div>
-            <div>作者：雍陶</div>
+            <div>《{secondRecomend.title}》</div>
+            <div>作者：{secondRecomend.author}</div>
           </div>
           <RightListWrap>
             {otherRecomend?.map((poem) => (
@@ -191,10 +193,11 @@ const RightListWrap = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 4.5rem;
+    height: 5.6rem;
     line-height: 4.5rem;
     border-bottom: 0.1rem solid #e8e8e8;
     padding: 1rem;
+    cursor: pointer;
 
     .poem-name {
       flex: 1;
