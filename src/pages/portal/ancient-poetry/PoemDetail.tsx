@@ -70,7 +70,7 @@ const PoemDetailContent = ({ ancient }: { ancient: Poem }) => {
   );
 };
 
-const Container = styled.div`
+export const Container = styled.div`
   width: 85%;
   margin: 1rem auto;
   padding: 1rem;
@@ -82,14 +82,14 @@ const Container = styled.div`
   background-position: 100% 100%;
 `;
 
-const LeftImgWrap = styled.div`
+export const LeftImgWrap = styled.div`
   width: 48%;
   height: 48rem;
   background-image: url(${setRadomBgImg()});
   background-size: cover;
 `;
 
-const RightPoemWrap = styled.div`
+export const RightPoemWrap = styled.div`
   position: relative;
   height: 48rem;
   width: 48%;

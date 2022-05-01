@@ -1,5 +1,5 @@
 /*
- * @description:
+ * @description: 诗词相关类型接口
  * @Date: 2022-04-24 21:09:34
  * @Author: xingheng
  */

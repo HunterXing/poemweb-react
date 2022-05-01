@@ -16,5 +16,7 @@
   - 后续用到相关技术栈再添加
 
 - 后端
-  - [x] springboot 2.6.2
+  > 前期采用之前写过的 nodejs，后期采用 springboot 2
+  - [x] nodejs
+  - [ ] springboot 2.6.2
   - 后续用到相关技术栈再添加

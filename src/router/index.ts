@@ -47,6 +47,10 @@ const routes = [
             component: () => import("pages/portal/ancient-poetry/AncientData"),
           },
           {
+            path: "list",
+            component: () => import("pages/portal/ancient-poetry/AncientList"),
+          },
+          {
             path: "detail",
             component: () => import("pages/portal/ancient-poetry/PoemDetail"),
           },
