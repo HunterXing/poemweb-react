@@ -5,14 +5,19 @@
  */
 import styled from "@emotion/styled";
 import { useAncientDetail } from "api/poemApi";
-import { defaultMargin, primaryColor } from "assets/styles/vars";
+import {
+  defaultMargin,
+  primaryColor,
+  setEllipsis,
+  setRadomBgImg,
+} from "assets/styles/vars";
 import Loading from "components/Loading";
 import { useSearchParams } from "react-router-dom";
 import { Poem } from "types/Poem";
+
 const PoemDetail = () => {
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id") || ""; // 获得诗词的id
-
   const { data: ancient, isLoading } = useAncientDetail({
     id,
     isAncient: true,
@@ -53,17 +58,14 @@ const PoemDetailContent = ({ ancient }: { ancient: Poem }) => {
             __html: ancient.content.replaceAll(/。/g, "。<br />"),
           }}
         ></div>
-        <div className="poem-detail-bottom-wrap clearfix">
-          <div className="fl pointer">返回上一层</div>
-          <div className="fr pointer">
-            <span className="iconfont icon-info-circle">纠错</span>
-          </div>
-          <div className="fr pointer">
+        <div className="poem-detail-bottom-wrap">
+          <div className={"pointer"}>返回上一层</div>
+          <div className={"pointer"}>
             <span className="iconfont icon-message message">10</span>
+            <span className="iconfont icon-info-circle">纠错</span>
           </div>
         </div>
       </RightPoemWrap>
-      {/* {ancient.title} */}
     </Container>
   );
 };
@@ -83,11 +85,12 @@ const Container = styled.div`
 const LeftImgWrap = styled.div`
   width: 48%;
   height: 48rem;
-  background-image: url("http://poem.notfound404.cn/img/20191230153812.png");
+  background-image: url(${setRadomBgImg()});
   background-size: cover;
 `;
 
 const RightPoemWrap = styled.div`
+  position: relative;
   height: 48rem;
   width: 48%;
   padding: 1.4rem;
@@ -100,6 +103,7 @@ const RightPoemWrap = styled.div`
     padding: 2rem 0 0;
     font-size: 3rem;
     font-weight: bold;
+    ${setEllipsis(2)}
   }
   .border-bottom-line {
     border-bottom: 3px solid #000;
@@ -135,6 +139,11 @@ const RightPoemWrap = styled.div`
     margin-top: 1.5rem;
   }
   .poem-detail-bottom-wrap {
+    position: absolute;
+    width: calc(100% - 2.8rem);
+    bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
     color: ${primaryColor};
 
     .message {

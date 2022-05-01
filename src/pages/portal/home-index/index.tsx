@@ -10,7 +10,7 @@ import { PlayCircleOutlined } from "@ant-design/icons";
 import { useRecomendAncient } from "api/poemApi";
 import { Poem } from "types/Poem";
 import { useNavigate } from "react-router-dom";
-import { setEllipsis } from "assets/styles/vars";
+import { setEllipsis, setRadomBgImg } from "assets/styles/vars";
 const PortalFirst = () => {
   return (
     <div className="container">
@@ -49,7 +49,10 @@ const PortalAncientRecommend = () => {
           </TitleSpan>
           <MoreText>更多&gt;&gt;</MoreText>
         </TilteWrapper>
-        <AncientContent>
+        <AncientContent
+          className={"pointer"}
+          onClick={() => goDetail(topRecomend?.poem_id)}
+        >
           <AncientContentLeft></AncientContentLeft>
           <AncientContentRightItem>
             <div className={"poem-title"}>{topRecomend?.title}</div>
@@ -62,11 +65,11 @@ const PortalAncientRecommend = () => {
           </AncientContentRightContent>
         </AncientContent>
         <ListenPoemWrapper>
-          <div className={"listen-left"}>
-            <img
-              src="http://poem.notfound404.cn/img/20191230153735.png"
-              alt="title"
-            />
+          <div
+            className={"listen-left pointer"}
+            onClick={() => goDetail(secondRecomend.poem_id)}
+          >
+            <img src={setRadomBgImg()} alt="title" />
             <div>《{secondRecomend.title}》</div>
             <div>作者：{secondRecomend.author}</div>
           </div>
@@ -76,10 +79,7 @@ const PortalAncientRecommend = () => {
                 className={"list-group-item pointer"}
                 onClick={() => goDetail(poem.poem_id)}
               >
-                <img
-                  src="http://poem.notfound404.cn/img/20191230153735.png"
-                  alt=""
-                />
+                <img src={setRadomBgImg()} alt="" />
                 <span className="poem-name"> 《{poem.title}》</span>
 
                 <PlayCircleOutlined />
@@ -146,7 +146,7 @@ const AncientContentLeft = styled.div`
   grid-row-end: 6;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("http://poem.notfound404.cn/img/20191230153102.png");
+  background-image: url(${setRadomBgImg(7)});
 `;
 
 const AncientContentRightItem = styled.div`
