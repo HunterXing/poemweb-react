@@ -1,7 +1,7 @@
 /*
  * @description: 首页默认路由页面
  * @Date: 2022-02-06 22:36:09
- * @LastEditTime: 2022-04-24 23:38:04
+ * @LastEditTime: 2022-05-01 16:49:36
  * @Author: xingheng
  */
 
@@ -9,7 +9,8 @@ import styled from "@emotion/styled";
 import { PlayCircleOutlined } from "@ant-design/icons";
 import { useRecomendAncient } from "api/poemApi";
 import { Poem } from "types/Poem";
-
+import { useNavigate } from "react-router-dom";
+import { setEllipsis } from "assets/styles/vars";
 const PortalFirst = () => {
   return (
     <div className="container">
@@ -19,10 +20,16 @@ const PortalFirst = () => {
 };
 
 const PortalAncientRecommend = () => {
+  const navigate = useNavigate();
   const { data: poems } = useRecomendAncient();
   const topRecomend = (poems ? poems[0] : {}) as Poem;
   const secondRecomend = (poems ? poems[1] : {}) as Poem;
   const otherRecomend = poems ? [...poems].slice(2, poems.length) : [];
+
+  // 去诗词详情页
+  const goDetail = (id: string) => {
+    navigate(`/ancientpoetry/detail?id=${id}`);
+  };
 
   return (
     <>
@@ -65,7 +72,10 @@ const PortalAncientRecommend = () => {
           </div>
           <RightListWrap>
             {otherRecomend?.map((poem) => (
-              <div className={"list-group-item"}>
+              <div
+                className={"list-group-item pointer"}
+                onClick={() => goDetail(poem.poem_id)}
+              >
                 <img
                   src="http://poem.notfound404.cn/img/20191230153735.png"
                   alt=""
@@ -147,11 +157,7 @@ const AncientContentRightItem = styled.div`
   .poem-title {
     font-size: 1.8rem;
     font-weight: bold;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box; /* 将对象作为弹性伸缩盒子模型显示 */
-    -webkit-line-clamp: 2; /* 控制最多显示几行 */
-    -webkit-box-orient: vertical; /* 设置或检索伸缩盒对象的子元素的排列方式 */
+    ${setEllipsis(2)}
   }
 
   .poem-author {
@@ -201,11 +207,7 @@ const RightListWrap = styled.div`
 
     .poem-name {
       flex: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
+      ${setEllipsis()}
     }
 
     img {

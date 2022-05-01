@@ -1,10 +1,11 @@
-import React, { Fragment } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import CommonFooter from "components/CommonFooter";
 import styled from "@emotion/styled";
 import { QueryClient, QueryClientProvider } from "react-query";
+// import "http://at.alicdn.com/t/font_3370713_eyn2i9rtrbe.css";
 const ContainWrap = styled.div`
   min-height: 100vh;
 `;

@@ -23,3 +23,18 @@ export const useRecomendAncient = () => {
     return data.result;
   });
 };
+
+// 推荐古诗词
+export const useAncientDetail = (params?: {
+  id: string;
+  isAncient?: boolean;
+}) => {
+  const client = useHttp();
+  return useQuery<Poem>(["ancientDetail", params], async () => {
+    const data = await client("/api/v1/poems/detail", {
+      method: "GET",
+      data: params,
+    });
+    return data.result;
+  });
+};

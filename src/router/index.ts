@@ -1,7 +1,7 @@
 /*
  * @description: 路由统一管理
  * @Date: 2022-02-07 11:24:29
- * @LastEditTime: 2022-04-24 23:32:15
+ * @LastEditTime: 2022-04-26 17:10:51
  * @Author: xingheng
  */
 // 全局路由配置
@@ -47,7 +47,7 @@ const routes = [
             component: () => import("pages/portal/ancient-poetry/AncientData"),
           },
           {
-            path: "detail/:id",
+            path: "detail",
             component: () => import("pages/portal/ancient-poetry/PoemDetail"),
           },
         ],
