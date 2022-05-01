@@ -78,6 +78,7 @@ const PortalAncientRecommend = () => {
               <div
                 className={"list-group-item pointer"}
                 onClick={() => goDetail(poem.poem_id)}
+                key={poem.poem_id}
               >
                 <img src={setRadomBgImg()} alt="" />
                 <span className="poem-name"> 《{poem.title}》</span>

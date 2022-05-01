@@ -28,9 +28,8 @@ const AncientData = () => {
 };
 
 const WordContent = () => {
-  // const [count, setCount] = useState(0);
   const { data: words, isLoading } = usePoemCount();
-  const count = words?.length;
+  const count = words?.reduce((sum, poem) => sum + poem?.value, 0);
   const navigate = useNavigate();
   return (
     <>
