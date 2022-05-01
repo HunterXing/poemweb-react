@@ -128,11 +128,11 @@ const RightPoemWrap = styled.div`
     clear: both;
   }
   .content-warp {
-    line-height: 36px;
-    font-size: 20px;
-    height: 250px;
+    line-height: 3.6rem;
+    font-size: 2rem;
+    height: 22rem;
     overflow-y: auto;
-    margin-top: 15px;
+    margin-top: 1.5rem;
   }
   .poem-detail-bottom-wrap {
     color: ${primaryColor};
