@@ -69,7 +69,7 @@ const PortalAncientRecommend = () => {
             className={"listen-left pointer"}
             onClick={() => goDetail(secondRecomend.poem_id)}
           >
-            <img src={setRadomBgImg()} alt="title" />
+            <img src={setRadomBgImg(4)} alt="title" />
             <div>《{secondRecomend.title}》</div>
             <div>作者：{secondRecomend.author}</div>
           </div>
@@ -80,12 +80,11 @@ const PortalAncientRecommend = () => {
                 onClick={() => goDetail(poem.poem_id)}
                 key={poem.poem_id}
               >
-                <img src={setRadomBgImg()} alt="" />
+                <img src={setRadomBgImg(4)} alt="" />
                 <span className="poem-name">
                   {" "}
                   《{poem.title || poem.chapter}》
                 </span>
-
                 <PlayCircleOutlined />
               </div>
             ))}
