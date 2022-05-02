@@ -7,7 +7,7 @@
 import { Fragment } from "react";
 import styled from "@emotion/styled";
 import { Input, Button } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const { Search } = Input;
 const Header = styled.div`
@@ -59,6 +59,10 @@ const ButtonWrapper = styled.div`
   justify-content: space-between;
 `;
 const PortalHeader = () => {
+  const navigate = useNavigate();
+  const onSearch = (keyword: string) => {
+    navigate(`/search?keyword=${keyword}`);
+  };
   return (
     <Fragment>
       <Header>
@@ -85,7 +89,5 @@ const PortalHeader = () => {
     </Fragment>
   );
 };
-
-const onSearch = () => {};
 
 export default PortalHeader;

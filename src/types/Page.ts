@@ -8,3 +8,8 @@ export interface PaginationProps {
   pageSize: number;
   totalCount?: number;
 }
+
+export interface SearchPaginationProps extends PaginationProps {
+  result_count_modern: number;
+  result_count_ancient: number;
+}

@@ -92,7 +92,7 @@ const PoemListContent = ({
                 —&nbsp;
                 <span className={"poem-author"}>{poem.author}</span>
                 &nbsp;
-                <span className="poem-title">{poem.title}</span>
+                <span className="poem-title">{poem.title || poem.chapter}</span>
               </div>
             ))
           ) : (

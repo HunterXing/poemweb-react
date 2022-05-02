@@ -67,6 +67,14 @@ const routes = [
     ],
   },
   {
+    path: "search/*",
+    component: () => import("pages/portal/search"),
+    meta: {
+      title: "诗词搜索",
+      needLogin: false,
+    },
+  },
+  {
     path: "/projectlist",
     component: () => import("pages/learn-pages/project-list"),
     meta: {

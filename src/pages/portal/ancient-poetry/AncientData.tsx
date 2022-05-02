@@ -56,21 +56,16 @@ const WordContent = () => {
               <Tag
                 key={poemClass.name}
                 className={"pointer"}
-                color={
-                  sample([
-                    "geekblue",
-                    "green",
-                    "purple",
-                    "volcano",
-                    "orange",
-                    "gold",
-                    "lime",
-                    "pink",
-                  ]) as LiteralUnion<
-                    PresetColorType | PresetStatusColorType,
-                    string
-                  >
-                }
+                color={sample([
+                  "geekblue",
+                  "green",
+                  "purple",
+                  "volcano",
+                  "orange",
+                  "gold",
+                  "lime",
+                  "pink",
+                ])}
                 onClick={() => {
                   navigate(`list?classify=${poemClass.name}`);
                 }}

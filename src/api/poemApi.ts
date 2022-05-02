@@ -1,7 +1,7 @@
 import { useHttp } from "api/http";
 import { useQuery } from "react-query";
-import { Poem, PoemCount } from "types/Poem";
-import { PaginationProps } from "types/Page";
+import { KeyWord, Poem, PoemCount } from "types/Poem";
+import { PaginationProps, SearchPaginationProps } from "types/Page";
 
 // 古诗词数量
 export const usePoemCount = () => {
@@ -56,5 +56,37 @@ export const usePoemListByClassify = (params?: {
       data: params,
     });
     return data;
+  });
+};
+
+// 获得某类别的诗词列表
+export const useSearchListByName = (params?: {
+  keyWord: string;
+  pageIndex: number;
+  pageSize: number;
+}) => {
+  const client = useHttp();
+  return useQuery<{
+    code: number;
+    pagination: SearchPaginationProps;
+    result_ancient: Poem[];
+    result_modern?: Poem[];
+  }>(["searchPoemList", params], async () => {
+    const data = await client("/api/v1/poems/searchList", {
+      method: "GET",
+      data: params,
+    });
+    return data;
+  });
+};
+
+// 热门搜索关键词
+export const useHotKeywords = () => {
+  const client = useHttp();
+  return useQuery<KeyWord[]>(["hotKeyWords"], async () => {
+    const data = await client("/api/v1/poems/hotWord", {
+      method: "GET",
+    });
+    return data.result;
   });
 };

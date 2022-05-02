@@ -81,7 +81,10 @@ const PortalAncientRecommend = () => {
                 key={poem.poem_id}
               >
                 <img src={setRadomBgImg()} alt="" />
-                <span className="poem-name"> 《{poem.title}》</span>
+                <span className="poem-name">
+                  {" "}
+                  《{poem.title || poem.chapter}》
+                </span>
 
                 <PlayCircleOutlined />
               </div>

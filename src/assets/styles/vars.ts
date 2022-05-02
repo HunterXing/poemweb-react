@@ -8,13 +8,16 @@ import { random } from "lodash";
 // 颜色
 export const primaryColor = "#ae1e03";
 export const greenColor = "#80ac7b";
-
+export const fontGray = "#9199a1";
 // 字体
 export const defaultFont = "1.4rem";
 
 // 边距
 export const defaultMargin = "1.5rem";
 export const defaultPadding = defaultMargin;
+
+// border
+export const defaultBorder = "0.1rem solid #e2e7ea";
 
 // 公共样式
 export const containterCommon = `

@@ -22,3 +22,8 @@ export interface Poem {
   section?: string | null;
   title: string;
 }
+
+export interface KeyWord {
+  key_word: string;
+  count: number;
+}
