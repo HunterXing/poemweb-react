@@ -112,7 +112,9 @@ const PoemListContent = ({
               </>
             )}
           </div>
-          <div className={"pointer"}>返回诗词分类</div>
+          <div className={"pointer"} onClick={() => navigate(-1)}>
+            返回诗词分类
+          </div>
         </div>
       </RightPoemListWrap>
     </Container>

@@ -5,7 +5,7 @@
  */
 import { Fragment, useState } from "react";
 import PortalHeader from "../components/PortalHeader";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useHotKeywords, useSearchListByName } from "api/poemApi";
 import styled from "@emotion/styled";
 import {
@@ -125,8 +125,11 @@ const SearchList = ({
 };
 
 const PoemItem = ({ poem, keyWord }: { poem: Poem; keyWord: string }) => {
+  const navigate = useNavigate();
   return (
-    <PoemItemWrap>
+    <PoemItemWrap
+      onClick={() => navigate(`/ancientpoetry/detail?id=${poem.id}`)}
+    >
       <div
         className={"poem-title"}
         dangerouslySetInnerHTML={{

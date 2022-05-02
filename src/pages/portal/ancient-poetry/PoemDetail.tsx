@@ -12,7 +12,7 @@ import {
   setRadomBgImg,
 } from "assets/styles/vars";
 import Loading from "components/Loading";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Poem } from "types/Poem";
 
 const PoemDetail = () => {
@@ -35,6 +35,7 @@ const PoemDetail = () => {
 };
 
 const PoemDetailContent = ({ ancient }: { ancient: Poem }) => {
+  const navigate = useNavigate();
   return (
     <Container>
       <LeftImgWrap />
@@ -59,7 +60,9 @@ const PoemDetailContent = ({ ancient }: { ancient: Poem }) => {
           }}
         ></div>
         <div className="poem-detail-bottom-wrap">
-          <div className={"pointer"}>返回上一层</div>
+          <div className={"pointer"} onClick={() => navigate(-1)}>
+            返回上一层
+          </div>
           <div className={"pointer"}>
             <span className="iconfont icon-message message">10</span>
             <span className="iconfont icon-info-circle">纠错</span>
