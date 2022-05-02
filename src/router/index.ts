@@ -64,6 +64,94 @@ const routes = [
           needLogin: true,
         },
       },
+      {
+        path: "poemtest",
+        component: () => import("components/NoData/DevContainer"),
+        meta: {
+          title: "诗词测试",
+          needLogin: true,
+        },
+      },
+      {
+        path: "searchrank",
+        component: () => import("components/NoData/DevContainer"),
+        meta: {
+          title: "检索排行",
+          needLogin: false,
+        },
+      },
+      {
+        path: "poetrank",
+        component: () => import("components/NoData/DevContainer"),
+        meta: {
+          title: "诗人排行",
+          needLogin: false,
+        },
+      },
+      {
+        path: "poetdetail",
+        component: () => import("components/NoData/DevContainer"),
+        meta: {
+          title: "诗人风采",
+          needLogin: false,
+        },
+      },
+      {
+        path: "poetstory",
+        component: () => import("components/NoData/DevContainer"),
+        meta: {
+          title: "诗人轶事",
+          needLogin: false,
+        },
+      },
+      {
+        path: "poemallusion",
+        component: () => import("components/NoData/DevContainer"),
+        meta: {
+          title: "诗词典故",
+          needLogin: false,
+        },
+      },
+      {
+        path: "poemdiscuss",
+        component: () => import("components/NoData/DevContainer"),
+        meta: {
+          title: "精选点评",
+          needLogin: false,
+        },
+      },
+      {
+        path: "listenpoem",
+        component: () => import("components/NoData/DevContainer"),
+        meta: {
+          title: "坐听诗语",
+          needLogin: false,
+        },
+      },
+      {
+        path: "activity",
+        component: () => import("components/NoData/DevContainer"),
+        meta: {
+          title: "官方活动",
+          needLogin: false,
+        },
+      },
+      {
+        path: "poemnews",
+        component: () => import("components/NoData/DevContainer"),
+        meta: {
+          title: "诗讯列表",
+          needLogin: false,
+        },
+      },
+      {
+        path: "poemnewsadd",
+        component: () => import("components/NoData/DevContainer"),
+        meta: {
+          title: "诗讯投稿",
+          needLogin: false,
+        },
+      },
     ],
   },
   {

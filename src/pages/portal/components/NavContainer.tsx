@@ -74,11 +74,11 @@ export const routerList = [
       },
       {
         name: "诗词测试",
-        path: "",
+        path: "poemtest",
       },
       {
         name: "检索排行",
-        path: "",
+        path: "searchrank",
       },
     ],
   },
@@ -87,15 +87,15 @@ export const routerList = [
     children: [
       {
         name: "诗人排行",
-        path: "",
+        path: "poetrank",
       },
       {
         name: "诗人风采",
-        path: "",
+        path: "poetdetail",
       },
       {
         name: "诗人轶事",
-        path: "",
+        path: "poetstory",
       },
     ],
   },
@@ -104,15 +104,15 @@ export const routerList = [
     children: [
       {
         name: "诗词典故",
-        path: "",
+        path: "poemallusion",
       },
       {
         name: "精选点评",
-        path: "",
+        path: "poemdiscuss",
       },
       {
         name: "坐听诗语",
-        path: "",
+        path: "listenpoem",
       },
     ],
   },
@@ -121,15 +121,15 @@ export const routerList = [
     children: [
       {
         name: "官方活动",
-        path: "",
+        path: "activity",
       },
       {
         name: "诗讯列表",
-        path: "",
+        path: "poemnews",
       },
       {
         name: "诗讯投稿",
-        path: "",
+        path: "poemnewsadd",
       },
     ],
   },
