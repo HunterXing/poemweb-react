@@ -1,7 +1,7 @@
 /*
  * @description: 路由统一管理
  * @Date: 2022-02-07 11:24:29
- * @LastEditTime: 2022-04-26 17:10:51
+ * @LastEditTime: 2022-05-02 21:44:14
  * @Author: xingheng
  */
 // 全局路由配置
@@ -159,6 +159,14 @@ const routes = [
     component: () => import("pages/portal/search"),
     meta: {
       title: "诗词搜索",
+      needLogin: false,
+    },
+  },
+  {
+    path: "test/*",
+    component: () => import("pages/test"),
+    meta: {
+      title: "测试页面",
       needLogin: false,
     },
   },

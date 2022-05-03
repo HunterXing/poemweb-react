@@ -12,8 +12,11 @@ import {
   setRadomBgImg,
 } from "assets/styles/vars";
 import Loading from "components/Loading";
+import useTextToSound from "hooks/useTextToSound";
+import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Poem } from "types/Poem";
+import textToSound from "utils/textToSound";
 
 const PoemDetail = () => {
   const [searchParams] = useSearchParams();
@@ -36,6 +39,20 @@ const PoemDetail = () => {
 
 const PoemDetailContent = ({ ancient }: { ancient: Poem }) => {
   const navigate = useNavigate();
+  const [text, setText] = useState("");
+  const setU = useTextToSound(text);
+
+  const toSound = (ancient: Poem) => {
+    const text =
+      (ancient?.title || ancient?.chapter) +
+      "。" +
+      ancient?.author +
+      "。" +
+      ancient?.content;
+
+    setU(new SpeechSynthesisUtterance());
+    setText(text);
+  };
   return (
     <Container>
       <LeftImgWrap />
@@ -43,7 +60,7 @@ const PoemDetailContent = ({ ancient }: { ancient: Poem }) => {
         <h1 className="title-font">{ancient.title}</h1>
         <div className="border-bottom-line"></div>
         <div className="clearfix author-container">
-          <div className="fl pointer">
+          <div className="fl pointer" onClick={() => toSound(ancient)}>
             <span className="iconfont icon-sound"></span>
           </div>
           <div className="fl" style={{ marginLeft: "15px" }}>

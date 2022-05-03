@@ -1,14 +1,14 @@
 /*
  * @description: 封装工具函数fn
  * @Date: 2022-02-07 13:45:29
- * @LastEditTime: 2022-02-07 15:14:40
+ * @LastEditTime: 2022-05-02 20:26:37
  * @Author: xingheng
  */
 import { Suspense, lazy } from "react";
 import { Navigate } from "react-router-dom";
 import Guard from "./guard";
 
-import Loading from "../../components/Loading";
+import Loading from "components/Loading";
 
 /**
  * @description: 路由懒加载
