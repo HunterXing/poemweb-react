@@ -15,7 +15,7 @@ ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={new QueryClient()}>
       <ContainWrap>
-        <BrowserRouter>
+        <BrowserRouter basename={"/poem"}>
           <App />
         </BrowserRouter>
       </ContainWrap>
